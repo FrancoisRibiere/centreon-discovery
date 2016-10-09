@@ -1,3 +1,6 @@
+## Centreon-Discovery 2.4
+- Added compatibility to Centreon 3.3
+
 ## Centreon-Discovery 2.3.1
 - Added compatibility to Centreon 2.4.1 (#1670)
 - Bug correction (Bug #1643)
