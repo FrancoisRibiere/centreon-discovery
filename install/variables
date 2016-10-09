@@ -20,7 +20,7 @@
 # Adaptation for Centreon 2.0 by: Merethis team
 # Inspired from Watt's script.
 #
-# Modified by Sub2.13
+# Modified by Sub2.13, FrancoisRibiere
 #
 # WEBSITE: http://community.centreon.com/projects/centreon-discovery
 # SVN: http://svn.modules.centreon.com/centreon-discovery
@@ -31,7 +31,7 @@
 
 # Define Discovery version
 NAME="Discovery"
-VERSION="2.3.1"
+VERSION="2.4"
 MODULE=$NAME.$VERSION
 
 # Global vars
@@ -43,7 +43,7 @@ CENTREON_CONF="/etc/centreon"
 AGENT_DIR="/usr/share/centreon-discovery"
 MODULE_DIR="www/modules/Discovery"
 INSTALL_DIR_CENTREON=""
-#BASE_DIR="" <-- ne pas décommenter ;-)
+#BASE_DIR="" <-- ne pas dÃ©commenter ;-)
 WEB_USER=""
 WEB_GROUP=""
 NAGIOS_USER=""
