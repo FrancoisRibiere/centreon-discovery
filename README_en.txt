@@ -6,23 +6,25 @@ Version: 2.3.1
 Distribution: Debian/CentOS
 
 ------------------------------------------------
-#	Requirements
+#	Requirements Centreon 3.3
 ------------------------------------------------
 * Nmap (version 5.00 or highter) must be installed on each poller. In the case of a centralized architecture, nmap must be installed on the central.
-* Python (version 2.4) must be installed too on the central and on every pollers.
+* Python (version 2.6) must be installed too on the central and on every pollers.
 * The package python-dev (or python-devel depending on linux distribution) must be installed too on the central and on every pollers.
-* The package mysql-devel (on CentOS) must be installed on the central.
+* The package maraidb-devel (v5.5 on CentOS 6.7) must to installed on the central.
+* The packages zlib-devel et openssl-devel (sur CentOS) must be installed on the central.
+
 
 ------------------------------------------------
 #	Setup:
 ------------------------------------------------
-1. Get last version of Discovery module here http://community.centreon.com/projects/centreon-discovery
+1. Get last version of Discovery module here http://github.com/projects/centreon-discovery
 
-Go to the page http://community.centreon.com/projects/centreon-discovery
+Go to the page http://github.com/projects/centreon-discovery
 
 2. Extract files from the archive
 
-	# tar xzf centreon-discovery-x.x.tar.gz
+	# tar xzf centreon-discovery-x.x.zip
 
 3. Launch setup script
 
@@ -30,30 +32,29 @@ Go to the page http://community.centreon.com/projects/centreon-discovery
 	# chmod 755 install.sh
 
 Choose the setup type :
- - as poller : "-t poller"
- - as central : "-t central"
- - as both : "-t both"
+ - as poller: "-t poller"
+ - as central: "-t central"
+ - as both (if installed on the Centron server): "-t both"
  
-Example for poller : # ./install.sh -i -t poller
+Example for poller (bash avoid deconnection on exit): # bash ./install.sh -i -t poller
 The "-i-" option allows you to specify the setup mode
 
 4. Go to Centreon interface
 
-Reach menu 'Administration > Modules > Centreon-Discovery'
+Reach menu 'Administration > Extensions > Modules > Centreon-Discovery'
 The Discovery module must be listed but not installed.
 Click on the icon to the right "Install Module" then on button "install module" to launch install.
 
-5. Execute Poller agent (installed in /etc/centreon-discovery by default) in root
+5. Execute Poller agent (installed in /usr/share/centreon-discovery by default) in root
 
-	# /etc/centreon-discovery/DiscoveryAgent_poller.py &
-(or $# python26 /etc/centreon-discovery/DiscoveryAgent_poller.py &)
+	# /usr/share/centreon-discovery/DiscoveryAgent_poller.py &
 
 ------------------------------------------------
 #	UPDATE
 ------------------------------------------------
 1. Go to Centreon interface
 
-Reach menu 'Administration > Modules > Centreon-Discovery'
+Reach menu 'Administration > Extensions> Modules > Centreon-Discovery'
 The Discovery module must be listed and installed.
 Click on the icon to the right "Uninstall Module" then on button "OK" to confirm.
 
@@ -62,36 +63,36 @@ Click on the icon to the right "Uninstall Module" then on button "OK" to confirm
 Check that poller agent is stopped.
 
 Delete agent(s)
-	# cd /etc/centreon-discovery
+	# cd /usr/share/centreon-discovery
 	# rm -f *.py
 
-Change directory "/etc/centreon-discovery" depending on your configuration.
+Change directory "/usr/share/centreon-discovery" depending on your configuration.
 
 3. Delete module
 
 Delete module
-	# cd /usr/local/centreon/www/modules
+	# cd /usr/share/centreon/www/modules
 	# rm -rf Discovery
 
-Change directory "/usr/local/centreon/www/modules" depending on your configuration.
+Change directory "/usr/share/centreon/www/modules" depending on your configuration.
 
 4. Go to "#	Installation:"
 
 ------------------------------------------------
 #	UNINSTALL (version 2.3 minimum)
 ------------------------------------------------
-1. Get last version of Discovery module here http://community.centreon.com/projects/centreon-discovery
+1. Get last version of Discovery module here http://github.com/projects/centreon-discovery
 
-Go to the page http://community.centreon.com/projects/centreon-discovery
+Go to the page http://github.com/projects/centreon-discovery
 
 2. Extract files from the archive
 
-	# tar xzf centreon-discovery-x.x.tar.gz
+	# tar xzf centreon-discovery-x.x.zip
 	
 3. Uninstall module
 
 Launch uninstall script
-	# ./install.sh -r /usr/share/centreon-discovery
+	# bash ./install.sh -r /usr/share/centreon-discovery
 
 Once uninstall process done without error, the module has been entirely deleted from Centreon and your system.
 
@@ -117,8 +118,8 @@ R : rpm -vhU http://nmap.org/dist/nmap-5.51-1.i386.rpm
 ------------------------------------------------
 	Centreon-Discovery
 	
-Module:			http://community.centreon.com/projects/centreon-discovery
-Documentation:	http://community.centreon.com/projects/centreon-discovery/documents
+Module:			http://github.com/projects/centreon-discovery
+Documentation:		http://github.com/projects/centreon-discovery/documents
 SVN:			http://svn.modules.centreon.com/centreon-discovery/
 Forum:			http://forum.centreon.com/forumdisplay.php/36-Centreon-discovery-s-modules
 
