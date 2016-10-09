@@ -207,7 +207,8 @@ elif [ "$DISTRIB" == "REDHAT" ] || [ "$DISTRIB" == "CENTOS" ] ; then
     if [ "$TYPE_INSTALL" == "poller" ] ; then
 	PACKAGES="python-devel"
     else
-	PACKAGES="python-devel mysql-devel"
+	#PACKAGES="python-devel mysql-devel"
+        PACKAGES="python-devel MariaDB-devel"
     fi
 fi
 
