@@ -6,23 +6,24 @@ Version: 2.3.1
 Distribution : Debian/CentOS
 
 ------------------------------------------------
-#	Prerequis
+#	Prerequis pour Centreon 3.3
 ------------------------------------------------
-* Python (version 2.4) doit être installé à la fois sur le ou les pollers ainsi que sur le central.
-* Le logiciel nmap (version 5.00 ou plus) doit être installé sur chaque poller. Dans le cas d'une architecture centralisée, nmap doit être installé sur le central.
-* Le paquet python-dev (python-devel en fonction des distributions) doit être installé à la fois sur le ou les pollers ainsi que sur le central.
-* Le paquet mysql-devel (sur CentOS) doit être installé sur le central.
+* Python (version 2.6) doit Ãªtre installÃ© Ã  la fois sur le ou les pollers ainsi que sur le central.
+* Le logiciel nmap (version 5.00 ou plus) doit Ãªtre installÃ© sur chaque poller. Dans le cas d'une architecture centralisÃ©e, nmap doit Ãªtre installÃ© sur le central.
+* Le paquet python-dev (python-devel en fonction des distributions) doit Ãªtre installÃ© Ã  la fois sur le ou les pollers ainsi que sur le central.
+* Le paquet maraidb-devel (v5.5 sur CentOS 6.7) doit Ãªtre installÃ© sur le central.
+* Les paquets  zlib-devel et openssl-devel (sur CentOS) doient Ãªtre installÃ©s sur le central.
 
 ------------------------------------------------
 #	Installation:
 ------------------------------------------------
-1. Télécharger la dernière version du module depuis la page de téléchargement
+1. TÃ©lÃ©charger la derniÃ¨re version du module depuis la page de tÃ©lÃ©chargement
 
-Se rendre sur la page http://community.centreon.com/projects/centreon-discovery
+Se rendre sur la page http://github.com/projects/centreon-discovery
 
 2. Extraire le contenu de l'archive
 
-	# tar xzf centreon-discovery-x.x.tar.gz
+	# tar xzf centreon-discovery-x.x.zip
 
 3. Lancer l'installation automatique
 
@@ -32,85 +33,84 @@ Se rendre sur la page http://community.centreon.com/projects/centreon-discovery
 Choississez votre type d'installation :
  - en tant que poller : "-t poller"
  - en tant que central : "-t central"
- - en tant que les deux : "-t both"
+ - en tant que les deux (si installÃ© sur le mÃªmeserveur que Centreon) : "-t both"
  
-Exemple pour poller : # ./install.sh -i -t poller
+Exemple pour poller (bash permet d'Ã©viter la dÃ©connexion) : # bash ./install.sh -i -t poller
 
-L'option "-i" permet de spécifier que l'on désire installer le module.
+L'option "-i" permet de spÃ©cifier que l'on dÃ©sire installer le module.
 
 4. Dans l'interface de Centreon
 
-Se rendre ensuite dans le menu 'Administration > Modules > Centreon-Discovery
-Le module Discovery doit figurer dans la liste des modules mais non installé.
-Cliquer sur l'icone à droite "Install Module" puis sur le bouton "install module" pour lancer l'installation.
+Se rendre ensuite dans le menu 'Administration > Extensions > Modules > Centreon-Discovery
+Le module Discovery doit figurer dans la liste des modules mais non installÃ©.
+Cliquer sur l'icone Ã  droite "Install Module" puis sur le bouton "install module" pour lancer l'installation.
 
-5. Exécuter l'agent Poller en fond de tâche (installé par défaut dans /etc/centreon-discovery) en root
-
-	# python /etc/centreon-discovery/DiscoveryAgent_poller.py &
-	(ou $# python26 /etc/centreon-discovery/DiscoveryAgent_poller.py &)
+5. ExÃ©cuter l'agent Poller en fond de tÃ¢che (installÃ© par dÃ©faut dans /etc/centreon-discovery) en root
+Si vous n'avez pas autorisÃ© le dÃ©marrage automatique:
+	# python /usr/share/centreon-discovery/DiscoveryAgent_poller.py &
 
 ------------------------------------------------
 #	MISE A JOUR
 ------------------------------------------------
 1. Dans l'interface de Centreon
 
-Se rendre ensuite dans le menu 'Administration > Modules > Centreon-Discovery
+Se rendre ensuite dans le menu 'Administration > Extensions > Modules > Centreon-Discovery
 Le module Discovery doit figurer dans la liste des modules.
-Cliquer sur l'icone à droite "Uninstall Module" puis sur le bouton "OK" pour confirmer.
+Cliquer sur l'icone Ã  droite "Uninstall Module" puis sur le bouton "OK" pour confirmer.
 
 2. Suppression de(s) agent(s)
 
-Vérifier que l'agent poller est bien arrêté
+VÃ©rifier que l'agent poller est bien arrÃªtÃ©
 
 Supprimer le(s) agent(s)
 	# cd /etc/centreon-discovery
 	# rm -f *.py
 
-Le chemin "/etc/centreon-discovery" est à adapter en fonction de votre configuration.
+Le chemin "/etc/centreon-discovery" est Ã  adapter en fonction de votre configuration.
 
 3. Suppression du module
 
 Supprimer le module
-	# cd /usr/local/centreon/www/modules
+	# cd /usr/share/centreon/www/modules
 	# rm -rf Discovery
 
-Le chemin "/usr/local/centreon/www/modules" est à adapter en fonction de votre configuration.
+Le chemin "/usr/share/centreon/www/modules" est Ã  adapter en fonction de votre configuration.
 
-4. Aller à "#	Installation:"
+4. Aller Ã  "#	Installation:"
 
 ------------------------------------------------
 #	DESINSTALLATION (version 2.3 minimum)
 ------------------------------------------------
-1. Télécharger la version du module installée depuis la page de téléchargement
+1. TÃ©lÃ©charger la version du module installÃ©e depuis la page de tÃ©lÃ©chargement
 
 Se rendre sur la page http://community.centreon.com/projects/centreon-discovery
 
 2. Extraire le contenu de l'archive
 
-	# tar xzf centreon-discovery-x.x.tar.gz
+	# tar xzf centreon-discovery-x.x.zip
 
-3. Désinstallation du module
+3. DÃ©sinstallation du module
 
-Lancer la désinstallation automatique
+Lancer la dÃ©sinstallation automatique
 	# ./install.sh -r /usr/share/centreon-discovery
 
-Une fois le processus terminé sans erreur, le module a été entièrement supprimé de Centreon et de votre système.
+Une fois le processus terminÃ© sans erreur, le module a Ã©tÃ© entiÃ¨rement supprimÃ© de Centreon et de votre systÃ¨me.
 
 ------------------------------------------------
 #	FAQ
 ------------------------------------------------
 Q : Dans quel type d'installation je me trouve : poller? central? ou both ?
 
-R1 : poller : si vous n'avez que Nagios d'installé sur cette machine et que ce dernier renvoit les infos collectées vers un serveur central. Voir la liste dans l'interface Centreon : "Configuration" --> "Centreon"  --> colonne localhost = NO)
-R2 : central : si vous n'avez que Centreon d'installé sur cette machine et que ce dernier collecte toutes les infos renvoyées par le(s) poller(s).
-R3 : both : si vous avez à la fois Nagios et Centreon d'installés sur la machine. Voir la liste dans l'interface Centreon : "Configuration" --> "Centreon" --> colonne localhost = YES)
+R1 : poller : si vous n'avez que Nagios d'installÃ© sur cette machine et que ce dernier renvoit les infos collectÃ©es vers un serveur central. Voir la liste dans l'interface Centreon : "Configuration" --> "Centreon"  --> colonne localhost = NO)
+R2 : central : si vous n'avez que Centreon d'installÃ© sur cette machine et que ce dernier collecte toutes les infos renvoyÃ©es par le(s) poller(s).
+R3 : both : si vous avez Ã  la fois Nagios et Centreon d'installÃ©s sur la machine. Voir la liste dans l'interface Centreon : "Configuration" --> "Centreon" --> colonne localhost = YES)
 
-Q :	Une erreur apparaît lorsque le module Python MySQLdb a besoin de créer un fichier à la racine du serveur web et qu'il n'a pas les droits (plus de détails de l'erreur plus bas).
+Q :	Une erreur apparaÃ®t lorsque le module Python MySQLdb a besoin de crÃ©er un fichier Ã  la racine du serveur web et qu'il n'a pas les droits (plus de dÃ©tails de l'erreur plus bas).
 
-R :	La solution consiste a rendre l'utilisateur Apache propriétaire de dossier www
+R :	La solution consiste a rendre l'utilisateur Apache propriÃ©taire de dossier www
 	$#chown www-data:www-data /var/www
 	
-Q : Comment installer la dernière version de nmap sur CentOS ?
+Q : Comment installer la derniÃ¨re version de nmap sur CentOS ?
 
 R : rpm -vhU http://nmap.org/dist/nmap-5.51-1.i386.rpm
 
